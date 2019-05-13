@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -23,4 +22,7 @@ public class Service {
 
     @NotNull
     private Instant entryDate;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", orphanRemoval = true)
+    private List<Customer> customers = new ArrayList<>();
 }

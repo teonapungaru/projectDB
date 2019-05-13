@@ -4,18 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Sales {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +22,8 @@ public class Sales {
 
     @NotNull
     private Integer quantity;
-    private Instant aquisitionDate;
+    private Instant acquisitionDate;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", orphanRemoval = true)
+    private List<Car> cars = new ArrayList<>();
 }
