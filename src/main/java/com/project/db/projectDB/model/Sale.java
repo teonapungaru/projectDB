@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Order {
+public class Sale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,9 @@ public class Order {
     private Integer quantity;
     private Instant acquisitionDate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sale", orphanRemoval = true)
     private List<Car> cars = new ArrayList<>();
+
+    @ManyToOne
+    private Customer customer;
 }

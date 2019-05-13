@@ -23,6 +23,6 @@ public class Service {
     @NotNull
     private Instant entryDate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "service", orphanRemoval = true)
     private List<Customer> customers = new ArrayList<>();
 }

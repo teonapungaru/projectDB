@@ -26,5 +26,10 @@ public class Customer {
     private String firstName;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    private List<Sale> sales = new ArrayList<>();
+
+    @ManyToOne
+    private Service service;
+
+
 }
