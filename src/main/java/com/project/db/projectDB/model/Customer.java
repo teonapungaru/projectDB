@@ -27,9 +27,4 @@ public class Customer {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", orphanRemoval = true)
     private List<Sale> sales = new ArrayList<>();
-
-    @ManyToOne
-    private Service service;
-
-
 }

@@ -24,8 +24,11 @@ public class Sale {
     private Integer quantity;
     private Instant acquisitionDate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "sale", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sale", orphanRemoval = true)
     private List<Car> cars = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sale", orphanRemoval = true)
+    private List<Accessories> accessories = new ArrayList<>();
 
     @ManyToOne
     private Customer customer;

@@ -21,6 +21,9 @@ public class Car {
     private String model;
 
     @NotBlank
+    private Float engine;
+
+    @NotBlank
     private Integer horsePower;
 
     @NotBlank
@@ -31,4 +34,5 @@ public class Car {
 
     @ManyToOne
     private Sale sale;
+
 }
