@@ -1,5 +1,6 @@
 package com.project.db.projectDB.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,10 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name = "sales")
 public class Sale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @NotNull
@@ -30,6 +33,7 @@ public class Sale {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "sale", orphanRemoval = true)
     private List<Accessories> accessories = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToOne
     private Customer customer;
 }

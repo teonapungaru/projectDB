@@ -1,6 +1,7 @@
 package com.project.db.projectDB.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,13 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name = "accessories")
 public class Accessories {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @NotBlank
@@ -26,6 +29,7 @@ public class Accessories {
     @NotNull
     private Float price;
 
+    @JsonIgnore
     @ManyToOne
     private Sale sale;
 }

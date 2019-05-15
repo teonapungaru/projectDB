@@ -9,5 +9,5 @@ import java.util.List;
 public interface SaleRepository extends JpaRepository<Sale, Long> {
 
     @Query(value = "SELECT * FROM sale", nativeQuery = true)
-    List<Sale> getSaless();
+    List<Sale> getSales();
 }
