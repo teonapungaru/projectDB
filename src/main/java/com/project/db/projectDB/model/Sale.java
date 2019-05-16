@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -35,5 +36,6 @@ public class Sale {
 
     @JsonIgnore
     @ManyToOne
+    @Nullable
     private Customer customer;
 }

@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "accessories")
 public class Accessories {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore

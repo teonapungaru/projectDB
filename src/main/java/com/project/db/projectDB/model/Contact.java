@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -24,10 +25,11 @@ public class Contact {
     private String street;
 
     @NotBlank
+    @Column(unique = true)
     private String phoneNo;
 
-    @JsonIgnore
+
     @OneToOne(targetEntity = Customer.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "customer_id")
+    @JoinColumn(nullable = true, name = "customer_id")
     private Customer customer;
 }

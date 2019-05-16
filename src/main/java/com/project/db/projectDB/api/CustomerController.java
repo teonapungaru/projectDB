@@ -1,12 +1,15 @@
 package com.project.db.projectDB.api;
 
+import com.project.db.projectDB.exception.CustomerException;
 import com.project.db.projectDB.model.Customer;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,5 +26,11 @@ public class CustomerController extends GeneralProjectController {
         List<Customer> customers = customerService.getAllCustomers();
         return new ResponseEntity<>(new ApiResponse<>(customers), HttpStatus.OK);
     }
+
+    @DeleteMapping(CustomerController.API_NAME)
+    public ResponseEntity deleteCustomer(@RequestParam("id")Long id) throws CustomerException {
+        return customerService.deleteCustomer(id);
+    }
+
 }
 
