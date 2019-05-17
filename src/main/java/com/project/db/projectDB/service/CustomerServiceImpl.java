@@ -1,7 +1,6 @@
 package com.project.db.projectDB.service;
 
 import com.project.db.projectDB.exception.CustomerException;
-import com.project.db.projectDB.model.Contact;
 import com.project.db.projectDB.model.Customer;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.repository.ContactRepository;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 

@@ -3,7 +3,6 @@ package com.project.db.projectDB.api;
 import com.project.db.projectDB.model.Car;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.service.CarService;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

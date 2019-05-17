@@ -1,7 +1,6 @@
 package com.project.db.projectDB.service;
 
 import com.project.db.projectDB.model.Car;
-import com.project.db.projectDB.payload.ContactRequestDTO;
 import com.project.db.projectDB.repository.CarRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
