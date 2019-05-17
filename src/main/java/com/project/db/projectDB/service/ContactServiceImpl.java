@@ -3,6 +3,7 @@ package com.project.db.projectDB.service;
 
 import com.project.db.projectDB.exception.ContactException;
 import com.project.db.projectDB.model.Contact;
+import com.project.db.projectDB.model.Customer;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.payload.ContactRequestDTO;
 import com.project.db.projectDB.repository.ContactRepository;
@@ -27,15 +28,17 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public void updateContact(ContactRequestDTO contactRequestDTO) {
-        //scrie cod
+    public void updateContact(ContactRequestDTO contactRequestDTO) throws ContactException {
+        //atentie aici modifica in repository
+        Contact contact = contactRepository.getContactById(contactRequestDTO.getId());
     }
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public ResponseEntity deleteContact(Long id) throws ContactException {
         try{
-
+            contactRepository.prepareCustomerForContactDeletion(id);
+            contactRepository.deleteContactById(id);
             return new ResponseEntity<>(new ApiResponse<>(null, "Contact deleted successfully."), HttpStatus.OK);
         } catch (Exception e){
             throw new ContactException(e.getMessage());

@@ -1,13 +1,13 @@
 package com.project.db.projectDB.api;
 
+import com.project.db.projectDB.exception.CarException;
 import com.project.db.projectDB.model.Car;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +23,13 @@ public class CarController extends GeneralProjectController {
         List<Car> cars  = carService.getAllCars();
         return new ResponseEntity<>(new ApiResponse<>(cars), HttpStatus.OK);
     }
+
+    @PostMapping(CarController.API_NAME)
+
+
+    @DeleteMapping(CarController.API_NAME + "/{id}")
+    public ResponseEntity deleteCar(@RequestParam("id") Long id) throws CarException{
+        return carService.deleteCar(id);
+    }
+    // TODO: 5/17/2019  make post api for a new car
 }

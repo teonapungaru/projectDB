@@ -1,5 +1,6 @@
 package com.project.db.projectDB.model;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.time.Instant;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,26 +16,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "sales")
-public class Sale {
+@Table(name = "transactions")
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
 
-    @NotBlank
-    private Instant acquisitionDate;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sale", orphanRemoval = true)
-    private List<Car> cars = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sale", orphanRemoval = true)
-    private List<Transaction> transactions = new ArrayList<>();
+    @NotNull
+    private Integer quantity;
 
     @JsonIgnore
     @ManyToOne
     @Nullable
-    private Customer customer;
+    private Sale sale;
 
+    @JsonIgnore
+    @ManyToOne
+    @Nullable
+    private Accessories accessories;
 }

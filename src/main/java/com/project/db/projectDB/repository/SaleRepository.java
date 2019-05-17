@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface SaleRepository extends JpaRepository<Sale, Long> {
 
+    //se poate apela metoda findAll()
     @Query(value = "SELECT * FROM sales", nativeQuery = true)
     List<Sale> getSales();
 

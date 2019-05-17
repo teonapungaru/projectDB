@@ -17,11 +17,11 @@ insert into contacts (city, street, phone_no, customer_id) values ('Vaslui', 'Ba
 
 -- Sale
 
-insert into sales (quantity, acquisition_date, customer_id) values (3, now(), 2);
-insert into sales (quantity, acquisition_date, customer_id) values (2, now(), 3);
-insert into sales (quantity, acquisition_date, customer_id) values (1, now(), 1);
-insert into sales (quantity, acquisition_date, customer_id) values (10, now(), 4);
-insert into sales (quantity, acquisition_date, customer_id) values (20, now(), 5);
+insert into sales (acquisition_date, customer_id) values (now(), 2);
+insert into sales (acquisition_date, customer_id) values (now(), 3);
+insert into sales (acquisition_date, customer_id) values (now(), 1);
+insert into sales (acquisition_date, customer_id) values (now(), 4);
+insert into sales (acquisition_date, customer_id) values (now(), 5);
 
 -- Car
 
@@ -33,11 +33,19 @@ insert into cars (model, engine, horse_power, fuel_type, price, sale_id) values 
 
 --Accessories
 
-insert into accessories (name, price, sale_id) values ('stergatoare', 20.5, 3);
-insert into accessories (name, price, sale_id) values ('odorizant', 30, 1);
-insert into accessories (name, price, sale_id) values ('solutie parbriz', 15, 2);
-insert into accessories (name, price, sale_id) values ('ulei', 21, 4);
-insert into accessories (name, price, sale_id) values ('becuri', 5.5, 5);
+insert into accessories (name, price) values ('stergatoare', 20.5);
+insert into accessories (name, price) values ('odorizant', 30);
+insert into accessories (name, price) values ('solutie parbriz', 15);
+insert into accessories (name, price) values ('ulei', 21);
+insert into accessories (name, price) values ('becuri', 5.5);
+
+--Transaction
+
+insert into transactions (accessories_id, sale_id, quantity) values (1, 1, 8);
+insert into transactions (accessories_id, sale_id, quantity) values (2, 2, 24);
+insert into transactions (accessories_id, sale_id, quantity) values (1, 3, 10);
+insert into transactions (accessories_id, sale_id, quantity) values (3, 4, 22);
+insert into transactions (accessories_id, sale_id, quantity) values (4, 1, 15);
 
 
 

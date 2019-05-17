@@ -28,7 +28,4 @@ public class Accessories {
     @NotNull
     private Float price;
 
-    @JsonIgnore
-    @ManyToOne
-    private Sale sale;
 }
