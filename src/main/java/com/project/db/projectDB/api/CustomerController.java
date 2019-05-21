@@ -30,7 +30,7 @@ public class CustomerController extends GeneralProjectController {
         return new ResponseEntity<>(new ApiResponse<>(customers), HttpStatus.OK);
     }
 
-    @DeleteMapping(CustomerController.API_NAME + "/{id}")
+    @DeleteMapping(CustomerController.API_NAME)
     public ResponseEntity deleteCustomer(@RequestParam("id")Long id) throws CustomerException {
         return customerService.deleteCustomer(id);
     }

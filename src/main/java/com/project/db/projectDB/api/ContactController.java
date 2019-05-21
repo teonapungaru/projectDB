@@ -26,7 +26,7 @@ public class ContactController extends GeneralProjectController{
         return new ResponseEntity<>(new ApiResponse<>(contacts), HttpStatus.OK);
     }
 
-    @DeleteMapping(ContactController.API_NAME + "/{id}")
+    @DeleteMapping(ContactController.API_NAME)
     public ResponseEntity deleteContact(@RequestParam("id")Long id) throws ContactException {
         return contactService.deleteContact(id);
     }

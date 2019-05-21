@@ -27,7 +27,7 @@ public class CarController extends GeneralProjectController {
     @PostMapping(CarController.API_NAME)
 
 
-    @DeleteMapping(CarController.API_NAME + "/{id}")
+    @DeleteMapping(CarController.API_NAME)
     public ResponseEntity deleteCar(@RequestParam("id") Long id) throws CarException{
         return carService.deleteCar(id);
     }
