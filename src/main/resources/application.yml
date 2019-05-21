@@ -9,17 +9,16 @@ spring:
     #            scripts:
     #             action: create
     #             create-target: create.sql
-    hibernate:
-      ddl-auto: create-drop
-      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-
+      hibernate:
+        ddl-auto: create-drop
+        dialect: org.hibernate.dialect.H2Dialect
+      database-platform: org.hibernate.dialect.H2Dialect
   datasource:
-    url: jdbc:mysql://aa1r5ki3mw3v4q9.crqr2khb6ff5.eu-central-1.rds.amazonaws.com/chronos_dev4?useSSL=false
-    username: chronos_dev4
-    password: chronos_dev4
-    initialization-mode: always
-    platform: mysql
+        url: jdbc:h2:~/test1
+        username: admin
+        password: admin
+    #initialization-mode: always
+    #platform: mysql
   jackson:
     serialization:
       write-dates-as-timestamps: true

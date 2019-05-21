@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -21,8 +23,9 @@ public class CustomerController extends GeneralProjectController {
     @Autowired
     private CustomerService customerService;
 
+
     @GetMapping(CustomerController.API_NAME)
-    public ResponseEntity<ApiResponse<List<Customer>>> getAllCustomers() {
+    public ResponseEntity<ApiResponse<List<Customer>>> getAllCustomers() throws SQLException {
         List<Customer> customers = customerService.getAllCustomers();
         return new ResponseEntity<>(new ApiResponse<>(customers), HttpStatus.OK);
     }
