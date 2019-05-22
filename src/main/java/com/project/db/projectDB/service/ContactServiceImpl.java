@@ -3,7 +3,6 @@ package com.project.db.projectDB.service;
 
 import com.project.db.projectDB.exception.ContactException;
 import com.project.db.projectDB.model.Contact;
-import com.project.db.projectDB.model.Customer;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.payload.ContactRequestDTO;
 import com.project.db.projectDB.repository.ContactRepository;

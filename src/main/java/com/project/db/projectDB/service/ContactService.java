@@ -5,7 +5,6 @@ import com.project.db.projectDB.model.Contact;
 import com.project.db.projectDB.payload.ContactRequestDTO;
 import org.springframework.http.ResponseEntity;
 
-import java.net.ConnectException;
 import java.util.List;
 
 public interface ContactService {

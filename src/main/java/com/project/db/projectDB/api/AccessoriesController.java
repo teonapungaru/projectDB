@@ -4,12 +4,10 @@ import com.project.db.projectDB.exception.AccessoriesException;
 import com.project.db.projectDB.model.Accessories;
 import com.project.db.projectDB.payload.AccessoriesRequestDTO;
 import com.project.db.projectDB.payload.ApiResponse;
-import com.project.db.projectDB.payload.CarRequestDTO;
 import com.project.db.projectDB.service.AccessoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

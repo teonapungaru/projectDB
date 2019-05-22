@@ -1,7 +1,6 @@
 package com.project.db.projectDB.repository;
 
 import com.project.db.projectDB.model.Accessories;
-import com.project.db.projectDB.model.Sale;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

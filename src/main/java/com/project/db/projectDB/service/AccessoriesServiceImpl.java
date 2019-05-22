@@ -1,14 +1,11 @@
 package com.project.db.projectDB.service;
 
 import com.project.db.projectDB.exception.AccessoriesException;
-import com.project.db.projectDB.exception.ContactException;
 import com.project.db.projectDB.model.Accessories;
-import com.project.db.projectDB.model.Transaction;
 import com.project.db.projectDB.payload.AccessoriesRequestDTO;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.repository.AccessoriesRepository;
 import com.project.db.projectDB.repository.TransactionRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
