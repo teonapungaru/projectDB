@@ -3,6 +3,7 @@ package com.project.db.projectDB.service;
 import com.project.db.projectDB.exception.CustomerException;
 import com.project.db.projectDB.model.Customer;
 import com.project.db.projectDB.payload.ApiResponse;
+import com.project.db.projectDB.payload.CustomerRequestDTO;
 import com.project.db.projectDB.repository.ContactRepository;
 import com.project.db.projectDB.repository.CustomerRepository;
 import com.project.db.projectDB.repository.SaleRepository;
@@ -41,6 +42,14 @@ public class CustomerServiceImpl implements CustomerService {
         } catch (Exception e){
             throw new CustomerException(e.getMessage());
         }
+    }
+
+    @Override
+    public void addCustomer(CustomerRequestDTO customerRequestDTO) {
+        Customer customer =  new Customer();
+        customer.setFirstName(customerRequestDTO.getFirstName());
+        customer.setLastName(customerRequestDTO.getLastName());
+        customerRepository.save(customer);
     }
 
 }

@@ -3,6 +3,7 @@ package com.project.db.projectDB.service;
 import com.project.db.projectDB.exception.CarException;
 import com.project.db.projectDB.model.Car;
 import com.project.db.projectDB.payload.ApiResponse;
+import com.project.db.projectDB.payload.CarRequestDTO;
 import com.project.db.projectDB.repository.CarRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,16 @@ public class CarServiceImpl implements CarService {
         }catch (Exception e){
             throw new CarException(e.getMessage());
         }
+    }
+
+    @Override
+    public void addCar(CarRequestDTO carRequestDTO) {
+        Car car = new Car();
+        car.setModel(carRequestDTO.getModel());
+        car.setEngine(carRequestDTO.getEngine());
+        car.setHorsePower(carRequestDTO.getHorsePower());
+        car.setFuelType(carRequestDTO.getFuelType());
+        car.setPrice(carRequestDTO.getPrice());
+        carRepository.save(car);
     }
 }

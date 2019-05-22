@@ -11,10 +11,6 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-    //se poate apela metoda findAll
-    @Query(value = "SELECT * FROM transactions", nativeQuery = true)
-    List<Transaction> getTransactions();
-
     @Modifying
     @Query(value = "UPDATE transactions SET accessories_id = null WHERE accessories_id=:accessories_id", nativeQuery = true )
     void prepareTransactionsForAccessoriesDeletion(@Param("accessories_id") Long accessories_id);

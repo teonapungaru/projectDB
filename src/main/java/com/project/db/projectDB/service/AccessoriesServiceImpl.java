@@ -4,6 +4,7 @@ import com.project.db.projectDB.exception.AccessoriesException;
 import com.project.db.projectDB.exception.ContactException;
 import com.project.db.projectDB.model.Accessories;
 import com.project.db.projectDB.model.Transaction;
+import com.project.db.projectDB.payload.AccessoriesRequestDTO;
 import com.project.db.projectDB.payload.ApiResponse;
 import com.project.db.projectDB.repository.AccessoriesRepository;
 import com.project.db.projectDB.repository.TransactionRepository;
@@ -42,6 +43,14 @@ public class AccessoriesServiceImpl implements AccessoriesService {
         }catch (Exception e){
             throw new AccessoriesException(e.getMessage());
         }
+    }
+
+    @Override
+    public void addAccessories(AccessoriesRequestDTO accessoriesRequestDTO) {
+        Accessories accessories = new Accessories();
+        accessories.setName(accessoriesRequestDTO.getName());
+        accessories.setPrice(accessoriesRequestDTO.getPrice());
+        accessoriesRepository.save(accessories);
     }
 
 }

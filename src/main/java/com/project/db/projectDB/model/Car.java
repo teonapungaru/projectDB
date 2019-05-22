@@ -36,6 +36,8 @@ public class Car {
     @NotBlank
     private Float price;
 
+    private String image;
+
     @JsonIgnore
     @ManyToOne
     @Nullable

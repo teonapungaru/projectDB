@@ -28,4 +28,6 @@ public class Accessories {
     @NotNull
     private Float price;
 
+    private String image;
+
 }

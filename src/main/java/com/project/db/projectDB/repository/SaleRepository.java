@@ -10,10 +10,6 @@ import java.util.List;
 
 public interface SaleRepository extends JpaRepository<Sale, Long> {
 
-    //se poate apela metoda findAll()
-    @Query(value = "SELECT * FROM sales", nativeQuery = true)
-    List<Sale> getSales();
-
     @Modifying
     @Query(value = "UPDATE sales SET customer_id = null WHERE customer_id=:customer_id", nativeQuery = true)
     void prepareSaleForCustomerDeletion(@Param("customer_id") Long customer_id);

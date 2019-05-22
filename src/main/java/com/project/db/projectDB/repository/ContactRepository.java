@@ -8,14 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 
-    @Query(value = "SELECT * FROM contacts", nativeQuery = true)
-    Contact getContactById(@Param("customer_id") Long customer_id);
-
-    @Query(value = "SELECT phone_no FROM contacts WHERE customer_id=:customer_id ", nativeQuery = true)
-    String getPhoneNo(@Param("customer_id") Long customer_id);
+    @Query(value = "SELECT * FROM contacts WHERE phoneNo=:phoneNo ", nativeQuery = true)
+    Optional<Contact> getContactByPhoneNo(@Param("phoneNo") String phoneNo);
 
     @Modifying
     @Query(value = "DELETE FROM contacts WHERE id=:contact_id", nativeQuery = true)

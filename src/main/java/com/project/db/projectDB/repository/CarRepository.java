@@ -10,12 +10,6 @@ import java.util.Optional;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    @Query(value = "SELECT * FROM cars WHERE id=:id", nativeQuery = true)
-    Optional<Car> getCarById(@Param("id") Long id);
-
-    @Query(value = "SELECT * FROM cars WHERE model=:model", nativeQuery = true)
-    Optional<Car> getCarByModel(@Param("model") String model);
-
     @Modifying
     @Query(value = "UPDATE cars SET sale_id = null WHERE id=:sale_id", nativeQuery = true)
     void prepareSaleForCarDeletion(@Param("sale_id") Long sale_id);

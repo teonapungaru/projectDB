@@ -29,8 +29,10 @@ public class ContactServiceImpl implements ContactService{
 
     @Override
     public void updateContact(ContactRequestDTO contactRequestDTO) throws ContactException {
-        //atentie aici modifica in repository
-        Contact contact = contactRepository.getContactById(contactRequestDTO.getId());
+        Contact updateContactDB = contactRepository.getContactByPhoneNo(contactRequestDTO.getPhoneNo()).
+                orElseThrow(() -> new ContactException("Contact with phone number: " + contactRequestDTO.getPhoneNo() + " was not found."));
+        updateContactDB.setPhoneNo(contactRequestDTO.getPhoneNo());
+        contactRepository.save(updateContactDB);
     }
 
     @Override

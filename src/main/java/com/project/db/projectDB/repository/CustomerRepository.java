@@ -8,9 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    @Query(value = "SELECT max(id) FROM customers", nativeQuery = true)
-    Long getLastId();
-
     @Modifying
     @Query(value = "INSERT INTO customers(first_name, last_name) values (:first_name, :last_name)", nativeQuery = true)
     Integer insertUser(@Param("first_name") String first_name, @Param("last_name") String last_name);
