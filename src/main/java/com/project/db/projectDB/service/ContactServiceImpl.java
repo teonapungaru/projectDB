@@ -38,7 +38,6 @@ public class ContactServiceImpl implements ContactService{
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public ResponseEntity deleteContact(Long id) throws ContactException {
         try{
-            contactRepository.prepareCustomerForContactDeletion(id);
             contactRepository.deleteContactById(id);
             return new ResponseEntity<>(new ApiResponse<>(null, "Contact deleted successfully."), HttpStatus.OK);
         } catch (Exception e){

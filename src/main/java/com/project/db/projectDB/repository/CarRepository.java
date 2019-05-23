@@ -1,12 +1,19 @@
 package com.project.db.projectDB.repository;
 
+import com.amazonaws.services.elastictranscoder.model.ListPipelinesResult;
+import com.project.db.projectDB.model.Accessories;
 import com.project.db.projectDB.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface CarRepository extends JpaRepository<Car, Long> {
+
+    @Query(value = "SELECT * FROM cars", nativeQuery = true)
+    List<Car> getAllCars();
 
     @Modifying
     @Query(value = "UPDATE cars SET sale_id = null WHERE id=:sale_id", nativeQuery = true)

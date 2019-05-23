@@ -36,6 +36,4 @@ public class ContactController extends GeneralProjectController{
         contactService.updateContact(contactRequestDTO);
         return new ResponseEntity<>(new ApiResponse<>("Contact updated successfully"), HttpStatus.OK);
     }
-
-    // TODO: 5/17/2019  make put api for update smth
 }

@@ -3,7 +3,6 @@ package com.project.db.projectDB.service;
 import com.project.db.projectDB.exception.CustomerException;
 import com.project.db.projectDB.model.Customer;
 import com.project.db.projectDB.payload.ApiResponse;
-import com.project.db.projectDB.payload.CustomerRequestDTO;
 import com.project.db.projectDB.repository.ContactRepository;
 import com.project.db.projectDB.repository.CustomerRepository;
 import com.project.db.projectDB.repository.SaleRepository;
@@ -12,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,28 +27,33 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers() {
+
+        List<Long> customerIds = customerRepository.getIds();
+        List<Customer> customers= new ArrayList<>();
+        for (Long id : customerIds) {
+            String[] splitAttributes = customerRepository.getObjectPropertiesById(id).split(",");
+            Customer customer = new Customer();
+            customer.setId(id);
+            customer.setFirstName(splitAttributes[0]);
+            customer.setLastName(splitAttributes[1]);
+
+            customers.add(customer);
+        }
+
         return customerRepository.findAll();
     }
 
     @Override
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional
     public ResponseEntity deleteCustomer(Long id) throws CustomerException {
         try{
-            contactRepository.prepareCustomerForContactDeletion(id);
+            contactRepository.deleteContactById(id);
             saleRepository.prepareSaleForCustomerDeletion(id);
             customerRepository.deleteCustomer(id);
             return new ResponseEntity<>(new ApiResponse<>(null, "Customer deleted successfully."), HttpStatus.OK);
         } catch (Exception e){
             throw new CustomerException(e.getMessage());
         }
-    }
-
-    @Override
-    public void addCustomer(CustomerRequestDTO customerRequestDTO) {
-        Customer customer =  new Customer();
-        customer.setFirstName(customerRequestDTO.getFirstName());
-        customer.setLastName(customerRequestDTO.getLastName());
-        customerRepository.save(customer);
     }
 
 }

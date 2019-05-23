@@ -8,6 +8,7 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @AllArgsConstructor
@@ -24,16 +25,16 @@ public class Car {
     @NotBlank
     private String model;
 
-    @NotBlank
+    @NotNull
     private Float engine;
 
-    @NotBlank
+    @NotNull
     private Integer horsePower;
 
     @NotBlank
     private String fuelType;
 
-    @NotBlank
+    @NotNull
     private Float price;
 
     private String image;

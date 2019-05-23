@@ -14,12 +14,13 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     Optional<Contact> getContactByPhoneNo(@Param("phoneNo") String phoneNo);
 
     @Modifying
-    @Query(value = "DELETE FROM contacts WHERE id=:contact_id", nativeQuery = true)
+    @Query(value = "DELETE FROM contacts WHERE customer_id=:contact_id", nativeQuery = true)
     void deleteContactById(@Param("contact_id") Long customer_id);
 
     @Modifying
-    @Query(value = "INSERT INTO contacts(city, street, phone_no) values (:city, :street, :phone_no)", nativeQuery = true)
-    Integer insertContact(@Param("city") String city, @Param("street") String street);
+    @Query(value = "INSERT INTO contacts(city, street, phone_no, customer_id) values (:city, :street, :phone_no, :customer_id)", nativeQuery = true)
+    Integer insertContact(@Param("city") String city, @Param("street") String street, @Param("phone_no") String phoneNo, @Param("customer_id") Long customer_id);
+
 
     @Modifying
     @Query(value = "UPDATE contacts SET customer_id = null WHERE customer_id=:customer_id", nativeQuery = true)

@@ -19,7 +19,6 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
 
     @NotBlank
@@ -28,7 +27,6 @@ public class Customer {
     @NotBlank
     private String firstName;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", orphanRemoval = true)
     private List<Sale> sales = new ArrayList<>();
 }

@@ -3,8 +3,9 @@ package com.project.db.projectDB.api;
 import com.project.db.projectDB.exception.CustomerException;
 import com.project.db.projectDB.model.Customer;
 import com.project.db.projectDB.payload.ApiResponse;
-import com.project.db.projectDB.payload.CustomerRequestDTO;
+import com.project.db.projectDB.payload.DetailsRequestDTO;
 import com.project.db.projectDB.service.CustomerService;
+import com.project.db.projectDB.service.DetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ public class CustomerController extends GeneralProjectController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private DetailsService detailsService;
+
 
     @GetMapping(CustomerController.API_NAME)
     public ResponseEntity<ApiResponse<List<Customer>>> getAllCustomers() throws SQLException {
@@ -28,10 +32,10 @@ public class CustomerController extends GeneralProjectController {
         return new ResponseEntity<>(new ApiResponse<>(customers), HttpStatus.OK);
     }
 
-    @PostMapping(CustomerController.API_NAME)
-    public ResponseEntity<ApiResponse<String>> addCustomer (@Valid @RequestBody CustomerRequestDTO customerRequestDTO){
-        customerService.addCustomer(customerRequestDTO);
-        return new ResponseEntity<>(new ApiResponse<>("Customer added successfully!"), HttpStatus.OK);
+    @PostMapping(CustomerController.API_NAME + "/add")
+    public ResponseEntity<ApiResponse<String>> addCustomerAndDetails (@Valid @RequestBody DetailsRequestDTO detailsRequestDTO){
+       detailsService.addDetailsCustomer(detailsRequestDTO);
+        return new ResponseEntity<>(new ApiResponse<>("Customer and contact added successfully!"), HttpStatus.OK);
     }
 
     @DeleteMapping(CustomerController.API_NAME)
