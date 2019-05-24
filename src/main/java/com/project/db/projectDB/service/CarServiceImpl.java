@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    @Transactional
     public ResponseEntity deleteCar(Long id) throws CarException {
         try {
             carRepository.prepareSaleForCarDeletion(id);

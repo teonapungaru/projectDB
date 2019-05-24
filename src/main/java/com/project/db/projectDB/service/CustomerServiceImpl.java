@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
             customers.add(customer);
         }
 
-        return customerRepository.findAll();
+        return customers;
     }
 
     @Override
