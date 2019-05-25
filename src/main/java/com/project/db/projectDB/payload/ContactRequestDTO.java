@@ -13,4 +13,5 @@ public class ContactRequestDTO {
     private String city;
     private String street;
     private String phoneNo;
+    private Integer customerId;
 }
