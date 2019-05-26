@@ -8,7 +8,7 @@ spring:
     #            create-source: metadata
     #            scripts:
     #             action: create
-    #             create-target: create.sql
+    #             create-target: createDB.sql
       hibernate:
         ddl-auto: create-drop
         dialect: org.hibernate.dialect.H2Dialect

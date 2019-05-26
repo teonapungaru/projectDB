@@ -4,7 +4,7 @@
 insert into customers (first_name, last_name) values ('john', 'doe');
 insert into customers (first_name, last_name) values ('jane', 'deo');
 insert into customers (first_name, last_name) values ('nico', 'problema');
-insert into customers (first_name, last_name) values ('bitchface', 'lupascu');
+insert into customers (first_name, last_name) values ('andrei', 'lupascu');
 insert into customers (first_name, last_name) values ('john1', 'doe1');
 
 -- Contact
