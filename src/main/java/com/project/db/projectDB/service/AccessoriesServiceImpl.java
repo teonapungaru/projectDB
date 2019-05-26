@@ -47,6 +47,7 @@ public class AccessoriesServiceImpl implements AccessoriesService {
         Accessories accessories = new Accessories();
         accessories.setName(accessoriesRequestDTO.getName());
         accessories.setPrice(accessoriesRequestDTO.getPrice());
+        accessories.setImage(accessoriesRequestDTO.getImage());
         accessoriesRepository.save(accessories);
     }
 

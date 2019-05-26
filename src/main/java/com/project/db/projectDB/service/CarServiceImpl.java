@@ -48,6 +48,7 @@ public class CarServiceImpl implements CarService {
         car.setHorsePower(carRequestDTO.getHorsePower());
         car.setFuelType(carRequestDTO.getFuelType());
         car.setPrice(carRequestDTO.getPrice());
+        car.setImage(carRequestDTO.getImage());
         carRepository.save(car);
     }
 }

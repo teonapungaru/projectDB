@@ -12,4 +12,5 @@ public class AccessoriesRequestDTO {
 
     private String name;
     private Float price;
+    private String image;
 }

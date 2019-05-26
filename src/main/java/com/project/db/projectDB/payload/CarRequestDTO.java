@@ -14,5 +14,6 @@ public class CarRequestDTO {
     private Integer horsePower;
     private String fuelType;
     private Float price;
+    private String image;
 
 }
