@@ -28,7 +28,7 @@ public class ContactServiceImpl implements ContactService{
 
     @Override
     public void updateContact(ContactRequestDTO contactRequestDTO) throws ContactException {
-        Contact updateContactDB = contactRepository.getContactByPhoneNo(contactRequestDTO.getCustomerId()).
+        Contact updateContactDB = contactRepository.getContactByCustomerId(contactRequestDTO.getCustomerId()).
                 orElseThrow(() -> new ContactException("Contact linked to customer: " + contactRequestDTO.getCustomerId() + " was not found."));
         updateContactDB.setCity(contactRequestDTO.getCity());
         updateContactDB.setStreet(contactRequestDTO.getStreet());

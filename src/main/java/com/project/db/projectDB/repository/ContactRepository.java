@@ -16,7 +16,7 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     List<Contact> getAllContacts();
 
     @Query(value = "SELECT * FROM contacts WHERE customer_id=:customer_id ", nativeQuery = true)
-    Optional<Contact> getContactByPhoneNo(@Param("customer_id") Integer customerId);
+    Optional<Contact> getContactByCustomerId(@Param("customer_id") Integer customerId);
 
     @Modifying
     @Query(value = "DELETE FROM contacts WHERE customer_id=:contact_id", nativeQuery = true)
